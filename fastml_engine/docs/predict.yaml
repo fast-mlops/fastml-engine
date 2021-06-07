@@ -1,0 +1,34 @@
+算法推理接口
+---
+tags:
+  - 推理接口
+parameters:
+  - name: infer
+    in: path
+    type: string
+    required: true
+    description: 推理接口名称
+  - name: data
+    in: body
+    type: string
+    required: true
+    description: 请求数据
+responses:
+  500:
+    description: 服务异常
+  200:
+    description: 请求成功
+    schema:
+      id: health
+      properties:
+        result:
+          type: boolean
+          description: 结果
+          default: true
+        data:
+          type: object
+          description: 数据
+          default: ""
+        metadata:
+          type: object
+          description: 元信息

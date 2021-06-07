@@ -1,0 +1,16 @@
+健康检查接口
+---
+tags:
+  - 健康检查，获取服务状态
+responses:
+  500:
+    description: 服务异常
+  200:
+    description: 请求成功
+    schema:
+      id: health
+      properties:
+        status:
+          type: string
+          description: 服务状态
+          default: UP
