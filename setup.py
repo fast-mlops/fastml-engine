@@ -9,7 +9,7 @@ print(packages)
 
 setup(
     name='fastml_engine',
-    version='1.0.3',
+    version='1.0.5',
     author="HaiTao Hou",
     author_email="hou610433155@163.com",
     description='A web server for deploy ml/dl model',
@@ -41,10 +41,8 @@ setup(
             "Programming Language :: Python :: 3",
             "License :: OSI Approved :: MIT License",
             "Operating System :: OS Independent",
-        ]
-    # project_urls={
-    #     "Bug Tracker": "https://github.com/mlflow/mlflow/issues",
-    #     "Documentation": "https://mlflow.org/docs/latest/index.html",
-    #     "Source Code": "https://github.com/mlflow/mlflow",
-    # },
+        ],
+    project_urls={
+        "Source Code": "https://github.com/fast-mlops/fastml-engine",
+    }
 )
