@@ -9,7 +9,7 @@ print(packages)
 
 setup(
     name='fastml_engine',
-    version='1.0.5',
+    version='1.0.6',
     author="HaiTao Hou",
     author_email="hou610433155@163.com",
     description='A web server for deploy ml/dl model',

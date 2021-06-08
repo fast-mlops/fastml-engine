@@ -24,6 +24,12 @@ Web服务框架搭建,以简化模型推理工程部署的工作内容
    fastml server --help  #查看帮助
    #service_path参数为inference-template-python目录的绝对路径
    fastml server --service-path /home/<service_path> --host 0.0.0.0 --port 5000
+   #在未声明service-path参数的情况下，则使用当前命令执行路径
+   fastml server --host 0.0.0.0 --port 5000
+   #支持定义 model-path参数声明模型存放路径，未声明则默认使用<service-path>/model
+   fastml server --service-path /home/<service_path> --model-path /opt/model --host 0.0.0.0 --port 5000
+   #快速启动，执行如下命令，采用默认参数
+   fastml server
 ```    
 3. 验证服务  
    a)通过浏览器访问健康检查接口 ip:port/health  
@@ -47,19 +53,20 @@ Web服务框架搭建,以简化模型推理工程部署的工作内容
 > 推理接口响应报文
 
 ```json
-{    "data": {  
-         "k": "v"  
-     },  
-     "metadata": {  
-         "duration": 1.65576171875,  
-         "content_type": "json"  
-     }
- }
+{
+   "status": true,
+   "data": {
+      "k": "v"
+   },
+   "metadata": {
+      "duration": 1.65576171875,
+      "content_type": "json"
+   }
+}
 ```
 
 #### 测试
 
-使用POSTMAN调用推理接口  
 注意：请求头需要添加Content-Type参数,用来指定请求报文格式
 
 |  Content-Type   |  说明   | 
