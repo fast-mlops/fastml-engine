@@ -40,6 +40,13 @@ def cli():
          "or use current directory path as default",
 )
 @click.option(
+    "--model-path",
+    metavar="PATH",
+    type=click.STRING,
+    default=None,
+    help="input absolute path to the model dir",
+)
+@click.option(
     "--host",
     "-h",
     metavar="HOST",
@@ -76,6 +83,7 @@ def cli():
 )
 def server(
         service_path,
+        model_path,
         host,
         port,
         workers,
@@ -85,6 +93,9 @@ def server(
     if not service_path:
         service_path = os.getcwd()
     env_map['SERVICE_PATH'] = service_path
+    if not model_path:
+        model_path = service_path+'/model'
+    env_map['MODEL_PATH'] = model_path
 
     if sys.platform == "win32":
         full_command = _build_waitress_command(host, port)

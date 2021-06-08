@@ -30,13 +30,27 @@ def health():
     return {'status': 'UP'}
 
 
+@app.route('/health/<endpoint_name>', methods=['GET'])
+def instance_health(endpoint_name):
+    return engine.health(endpoint_name)
+
+
+@app.route('/sysInfo', methods=['GET'])
+def sys_info():
+    return engine.sys_info()
+
+@app.route('/info/<endpoint_name>', methods=['GET'])
+def service_info(endpoint_name):
+    return engine.info(endpoint_name)
+
+
 @app.route('/algo/<endpoint_name>', methods=['POST'])
 @swag_from('docs/predict.yaml')
 def infer(endpoint_name):
     try:
         start_time = time.time()
         input_data = preprocess()
-        output_data = engine.invoke(input_data, instance_name=endpoint_name)
+        output_data = engine.infer(input_data, instance_name=endpoint_name)
         duration = time.time() * 1000 - start_time * 1000
         logger.info('total cost %d ms', duration)
         result = postprocess(output_data, duration)

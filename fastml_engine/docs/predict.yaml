@@ -3,7 +3,7 @@
 tags:
   - 推理接口
 parameters:
-  - name: infer
+  - name: algo/endpoint_name
     in: path
     type: string
     required: true
